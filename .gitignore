@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.DS_Store
+data/us_accidents.csv
+output/
+.env
+
