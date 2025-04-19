@@ -12,9 +12,9 @@ with open('/data/us_accidents.csv') as csvfile:
     reader = csv.DictReader(csvfile)
     for i, row in enumerate(reader):
         producer.send('accidents', row)
-        time.sleep(0.01)  # langsam senden
-        if i >= 10000:
+        time.sleep(0.01)
+        if i >= 1000000:
             break
 
-print("✅ CSV-Daten erfolgreich an Kafka gesendet.")
+print("an Kafka gesendet")
 
