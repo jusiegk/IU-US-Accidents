@@ -13,10 +13,8 @@ df = spark \
     .option("startingOffsets", "earliest") \
     .load()
 
-# Kafka liefert binary → konvertieren zu String
 df_string = df.selectExpr("CAST(value AS STRING) as json_str")
 
-# Konvertieren zu DataFrame mit Spalten
 from pyspark.sql.functions import from_json
 from pyspark.sql.types import StructType, StringType
 
@@ -24,10 +22,8 @@ schema = StructType().add("State", StringType())
 
 parsed_df = df_string.select(from_json(col("json_str"), schema).alias("data")).select("data.*")
 
-# Aggregieren
 result = parsed_df.groupBy("State").agg(count("*").alias("Unfallanzahl"))
 
-# In PostgreSQL schreiben
 result.write \
     .format("jdbc") \
     .option("url", "jdbc:postgresql://postgres:5432/traffic") \
@@ -38,5 +34,5 @@ result.write \
     .mode("overwrite") \
     .save()
 
-print("✅ Spark → PostgreSQL erfolgreich!")
+print("Spark")
 
