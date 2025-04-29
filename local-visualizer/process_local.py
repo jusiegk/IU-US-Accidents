@@ -5,12 +5,12 @@ import matplotlib.pyplot as plt
 csv_path = "../data/us_accidents.csv"
 
 if not os.path.exists(csv_path):
-    print("❗ CSV-Datei fehlt. Bitte unter /data/us_accidents.csv ablegen.")
+    print("keine CSV")
     exit()
 
-print("🟢 CSV wird geladen...")
+print("CSV wird erstellt)
 df = pd.read_csv(csv_path, nrows=10000)
-print(f"✅ CSV geladen: {len(df)} Zeilen")
+print(f" CSV: {len(df)} Zeilen")
 
 state_counts = df['State'].value_counts().sort_values(ascending=False)
 
@@ -23,5 +23,5 @@ plt.tight_layout()
 
 output_path = "../output/accidents_by_state.png"
 plt.savefig(output_path)
-print(f"✅ PNG gespeichert unter: {output_path}")
+print(f" PNG sollte durch sein unter: {output_path}")
 
