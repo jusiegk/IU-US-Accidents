@@ -21,5 +21,5 @@ plt.xlabel("Bundesstaat")
 plt.ylabel("Unfälle")
 plt.tight_layout()
 plt.savefig("output/accidents_by_state.png")
-print("✅ PNG erfolgreich erzeugt.")
+print("PNG").
 
